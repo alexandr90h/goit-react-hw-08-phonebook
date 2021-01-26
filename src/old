@@ -1,0 +1,21 @@
+                <label>Name 
+            <input type="text" name="name" autoComplete="off" value={name} onChange={hendleInputChanga} ref={register} />
+                 </label>
+                 {errors.name && <p>{errors.name.message}</p>}
+                <label>Number
+                     <input type="text" name="number" autoComplete="off" value={number} onChange={hendleInputChanga} ref={register}/>
+                 </label>
+                 {errors.number && <p>{ errors.number.message}</p>}
+                <button type="submit">Add contact</button>
+
+
+
+            <div className={styles.inputContainer}>
+            <label>Find contacts by name </label>
+            <form className={styles.formBox}>
+                <input type="text"
+                    autoComplete="off"
+                    onChange={hendlInputFilter} />
+                <button type="reset" onClick={resetInputFind} id="btn-reset"><FiX /></button>
+            </form>
+            </div>
