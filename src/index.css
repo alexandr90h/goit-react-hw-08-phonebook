@@ -12,3 +12,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#btn-reset {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+.svg-btn-reset {
+  width: 25px;
+  height: 25px;
+}
+#basic-addon2 {
+  padding: 0;
+  padding: 0 10px;
+}

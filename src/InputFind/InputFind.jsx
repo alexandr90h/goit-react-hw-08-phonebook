@@ -17,7 +17,7 @@ export default function InputFind() {
         e.currentTarget.value ? document.querySelector("#btn-reset").style.color = "red" : document.querySelector("#btn-reset").style.color = "rgb(192, 192, 192)";
     }
     return (
-        <form action="">
+        <form>
                               <InputGroup className="mb-3">
     <FormControl
       placeholder="Find contacts by name"
@@ -26,10 +26,11 @@ export default function InputFind() {
                 onChange={hendlInputFilter}
     />
     <InputGroup.Append >
-      <InputGroup.Text id="basic-addon2" ><button type="reset" onClick={resetInputFind} id="btn-reset"><FiX /></button></InputGroup.Text>
+            <InputGroup.Text id="basic-addon2" >
+              <button type="reset" onClick={resetInputFind} id="btn-reset">
+                <FiX className="svg-btn-reset" /></button></InputGroup.Text>
     </InputGroup.Append>
   </InputGroup>
-
         </form>
                 
         )

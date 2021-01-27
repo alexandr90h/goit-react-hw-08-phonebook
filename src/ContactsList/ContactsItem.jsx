@@ -9,16 +9,13 @@ export default function ContactsListItem(props) {
     const dispatch = useDispatch(); 
     // const ModalVisible = useSelector(state => state.state)
     return (
-        <li key={props.id} className={styles.contactItem}>
-            <div className={styles.contentItem}>
-                <span className={styles.nameItem}>{props.name}: </span>
-                <span className={styles.phonItem}>{props.number}</span>
-            </div>
-            <div className={styles.buttonConteiner}>
-                <button onClick={async() => {await dispatch(operation.getContactsById(props.id)); dispatch(contactsAction.modalVisible(true));}} ><VscEdit/></button>
-                <button onClick={() => dispatch(operation.delContacts(props.id))}><VscTrash/></button>
-            </div>
-        </li>
+        <tr key={props.id}>
+            <td lg="2">{props.n}</td>
+      <td>{props.name}</td>
+      <td>{props.number}</td>
+      <td className={styles.buttonConteiner}><button onClick={async() => {await dispatch(operation.getContactsById(props.id)); dispatch(contactsAction.modalVisible(true));}} ><VscEdit/></button>
+                <button onClick={() => dispatch(operation.delContacts(props.id))}><VscTrash/></button></td>
+    </tr>
     )
 }
 ContactsListItem.propTypes = {

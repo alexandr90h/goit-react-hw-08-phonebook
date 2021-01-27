@@ -36,7 +36,8 @@ export default function InputMainForm() {
                 break;
         }
     }
-    const hendleOnSubmite = () => {
+    const hendleOnSubmit = e => {
+        e.preventDefault();
         if (stateData.find(obj => obj.name.toLowerCase() === name.toLowerCase()) !== undefined) {
             alert(`${name} is alreadyin contacts.`);
             return;
@@ -50,7 +51,7 @@ export default function InputMainForm() {
     }
     return (
         <div>
-            <form onSubmit={hendleOnSubmite} className={styles.mainForm}>
+            <form onSubmit={hendleOnSubmit} className={styles.mainForm}>
                 <Form.Row className="align-items-center">
                     <Col xs="auto">
                         <Form.Label htmlFor="inlineFormInput" srOnly>
@@ -59,7 +60,8 @@ export default function InputMainForm() {
                         <Form.Control
                             className="mb-2"
                              id="inlineFormInput"
-                             placeholder="Name"
+                            placeholder="Name"
+                            autoComplete="off"
                             onChange={hendleInputChanga}
                             name="name"
                             value={name}
@@ -73,7 +75,13 @@ export default function InputMainForm() {
         <InputGroup.Prepend>
                                 <InputGroup.Text><VscDeviceMobile className={ styles.MobileIcon}/></InputGroup.Text>
         </InputGroup.Prepend>
-                            <FormControl id="inlineFormInputGroup" placeholder="Number" onChange={hendleInputChanga} name="number" value={ number}/>
+                            <FormControl
+                                id="inlineFormInputGroup"
+                                placeholder="Number"
+                                autoComplete="off"
+                                onChange={hendleInputChanga}
+                                name="number"
+                                value={number} />
       </InputGroup>
     </Col>
     <Col xs="auto">
