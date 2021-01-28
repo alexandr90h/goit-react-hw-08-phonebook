@@ -16,7 +16,6 @@ import * as operation from '../redux/operation';
 export default function ModalEdit() {
   const dispatch = useDispatch();
   const itemById = useSelector(state => state.itemById);
-  console.log(itemById);
   const [name, setName] = useState(itemById.name);
   const [number, setNumber] = useState(itemById.number);
 

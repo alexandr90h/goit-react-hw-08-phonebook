@@ -4,18 +4,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigation from './Navigation/Navigation';
 import Registration from './views/Registration';
 import Contacts from './views/Contacts';
+import Login from './views/Login';
+import Home from './views/Home';
 
 export default function App() {
   return (
     <div className={styles.mainContainer}>
       <Navigation />
       <Switch>
-        <Route path="/register" exact>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/register">
           <Registration />
         </Route>
 
-        <Route path="/contacts" exact>
+        <Route path="/contacts">
           <Contacts />
+        </Route>
+
+        <Route path="/login">
+          <Login />
         </Route>
       </Switch>
     </div>
