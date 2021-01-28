@@ -1,4 +1,4 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAction } from '@reduxjs/toolkit';
 
 const fetchContactsRequuest = createAction('contacts/fetchContactsRequuest');
 const fetchContactsSuccess = createAction('contacts/fetchContactsSuccess');
@@ -16,21 +16,50 @@ const filterContactsRequuest = createAction('contacts/filterContactsRequuest');
 const filterContactsSuccess = createAction('contacts/filterContactsSuccess');
 const filterContactsError = createAction('contacts/filterContactsError');
 
-const getContactsByIdRequuest = createAction('contacts/GetContactsByIdRequuest');
+const getContactsByIdRequuest = createAction(
+  'contacts/GetContactsByIdRequuest',
+);
 const getContactsByIdSuccess = createAction('contacts/GetContactsByIdSuccess');
 const getContactsByIdError = createAction('contacts/GetContactsByIdError');
 
-const saveContactsByIdRequuest = createAction('contacts/saveContactsByIdRequuest');
-const saveContactsByIdSuccess = createAction('contacts/saveContactsByIdSuccess');
+const saveContactsByIdRequuest = createAction(
+  'contacts/saveContactsByIdRequuest',
+);
+const saveContactsByIdSuccess = createAction(
+  'contacts/saveContactsByIdSuccess',
+);
 const saveContactsByIdError = createAction('contacts/saveContactsByIdError');
 
+const registerUserRequuest = createAction('contacts/registerUserRequuest');
+const registerUserSuccess = createAction('contacts/registerUserSuccess');
+const registerUserError = createAction('contacts/registerUserError');
+
 const filterChange = createAction('contacts/changeFilter');
-const modalVisible=createAction('contacts/modalVisible')
+const modalVisible = createAction('contacts/modalVisible');
 
 const contactsAction = {
-    fetchContactsRequuest, fetchContactsSuccess, fetchContactsError, addContactsRequuest,
-    addContactsSuccess, addContactsError, delContactsRequuest, delContactsSuccess, delContactsError, filterContactsRequuest,
-    filterContactsSuccess, filterContactsError, filterChange, getContactsByIdSuccess, getContactsByIdRequuest, getContactsByIdError, modalVisible,
-    saveContactsByIdRequuest,saveContactsByIdSuccess,saveContactsByIdError
-}
+  fetchContactsRequuest,
+  fetchContactsSuccess,
+  fetchContactsError,
+  addContactsRequuest,
+  addContactsSuccess,
+  addContactsError,
+  delContactsRequuest,
+  delContactsSuccess,
+  delContactsError,
+  filterContactsRequuest,
+  filterContactsSuccess,
+  filterContactsError,
+  filterChange,
+  getContactsByIdSuccess,
+  getContactsByIdRequuest,
+  getContactsByIdError,
+  modalVisible,
+  saveContactsByIdRequuest,
+  saveContactsByIdSuccess,
+  saveContactsByIdError,
+  registerUserRequuest,
+  registerUserSuccess,
+  registerUserError,
+};
 export default contactsAction;
