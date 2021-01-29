@@ -64,3 +64,13 @@ export const registerUser = item => async dispatch => {
     dispatch(contactsAction.registerUserError(error));
   }
 };
+
+export const loginUser = item => async dispatch => {
+  dispatch(contactsAction.loginUserRequuest());
+  try {
+    const { data } = await API.LogIn(item);
+    dispatch(contactsAction.loginUserSuccess(data));
+  } catch (error) {
+    dispatch(contactsAction.loginUserError(error));
+  }
+};

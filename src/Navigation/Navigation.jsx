@@ -1,9 +1,14 @@
 import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar';
+import { useSelector } from 'react-redux';
 
 export default function Navigation() {
+  const userName = useSelector(state => state.registerUser.user.name);
   return (
-    <nav>
+    <nav className="nav-bar-conteiner">
       <Nav variant="tabs">
         <Nav.Item>
           <Nav.Link as={NavLink} to="/" exact>
@@ -26,6 +31,10 @@ export default function Navigation() {
           </Nav.Link>
         </Nav.Item>
       </Nav>
+      <Form className="logout-form">
+        <Navbar.Brand>{userName}</Navbar.Brand>
+        <Button variant="outline-primary">Loguot</Button>
+      </Form>
     </nav>
   );
 }

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
 export async function FetchContacts() {
-  const { data } = await axios.get('/contacts/');
+  const { data } = await axios.get('contacts');
   return data;
 }
 export async function AddContacts(item) {
@@ -26,4 +26,7 @@ export async function SaveContacts(item) {
 }
 export async function Register(item) {
   return await axios.post('users/signup', item);
+}
+export async function LogIn(item) {
+  return await axios.post('users/login', item);
 }

@@ -34,10 +34,17 @@ const registerUserRequuest = createAction('contacts/registerUserRequuest');
 const registerUserSuccess = createAction('contacts/registerUserSuccess');
 const registerUserError = createAction('contacts/registerUserError');
 
+const loginUserRequuest = createAction('contacts/loginUserRequuest');
+const loginUserSuccess = createAction('contacts/loginUserSuccess');
+const loginUserError = createAction('contacts/loginUserError');
+
 const filterChange = createAction('contacts/changeFilter');
 const modalVisible = createAction('contacts/modalVisible');
 
 const contactsAction = {
+  loginUserRequuest,
+  loginUserSuccess,
+  loginUserError,
   fetchContactsRequuest,
   fetchContactsSuccess,
   fetchContactsError,

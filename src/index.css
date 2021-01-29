@@ -26,3 +26,9 @@ code {
   padding: 0;
   padding: 0 10px;
 }
+.nav-bar-conteiner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #dee2e6;
+}
