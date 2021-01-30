@@ -38,10 +38,17 @@ const loginUserRequuest = createAction('contacts/loginUserRequuest');
 const loginUserSuccess = createAction('contacts/loginUserSuccess');
 const loginUserError = createAction('contacts/loginUserError');
 
+const logoutUserRequuest = createAction('contacts/logoutUserRequuest');
+const logoutUserSuccess = createAction('contacts/logoutUserSuccess');
+const logoutUserError = createAction('contacts/logoutUserError');
+
 const filterChange = createAction('contacts/changeFilter');
 const modalVisible = createAction('contacts/modalVisible');
 
 const contactsAction = {
+  logoutUserError,
+  logoutUserSuccess,
+  logoutUserRequuest,
   loginUserRequuest,
   loginUserSuccess,
   loginUserError,

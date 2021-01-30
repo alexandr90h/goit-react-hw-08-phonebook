@@ -55,6 +55,11 @@ const registerUser = createReducer(initialState, {
     state.token = action.payload.token;
     state.isLoggedIn = true;
   },
+  [contactsAction.logoutUserSuccess]: (state, _) => {
+    state.user = initialState.user;
+    state.token = initialState.token;
+    state.isLoggedIn = initialState.isLoggedIn;
+  },
 });
 export default combineReducers({
   items,

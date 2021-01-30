@@ -1,5 +1,16 @@
 import contactsAction from './action';
 import * as API from '../api/api';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
 
 export const fetchContacts = () => async dispatch => {
   dispatch(contactsAction.fetchContactsRequuest());
@@ -68,9 +79,18 @@ export const registerUser = item => async dispatch => {
 export const loginUser = item => async dispatch => {
   dispatch(contactsAction.loginUserRequuest());
   try {
-    const { data } = await API.LogIn(item);
+    const { data } = await axios.post('users/login', item);
+    token.set(data.token);
     dispatch(contactsAction.loginUserSuccess(data));
   } catch (error) {
     dispatch(contactsAction.loginUserError(error));
   }
+};
+export const logoutUser = () => async dispatch => {
+  dispatch(contactsAction.logoutUserRequuest());
+  try {
+    await axios.post('users/logout');
+    token.unset();
+    dispatch(contactsAction.logoutUserSuccess());
+  } catch (error) {}
 };
