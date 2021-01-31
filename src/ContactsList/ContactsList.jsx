@@ -3,18 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import ContactsListItem from './ContactsItem';
 // import styles from './conractsList.module.scss'
 import * as operation from '../redux/operation';
-import { getContactsItem, getModalVisible } from '../redux/selectors';
+import { getContactsItem } from '../redux/selectors';
 import Table from 'react-bootstrap/Table';
 
 export default function ContactsList() {
   let n = 1;
   const stateData = useSelector(getContactsItem);
-  const modalVisible = useSelector(getModalVisible);
+  // const modalVisible = useSelector(getModalVisible);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(operation.fetchContacts());
     // eslint-disable-next-line
-  }, [dispatch, modalVisible]);
+  }, [dispatch]);
   return (
     <Table striped bordered hover>
       <thead>

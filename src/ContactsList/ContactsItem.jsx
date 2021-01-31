@@ -2,11 +2,13 @@ import styles from './contactsItem.module.scss';
 import PropTypes from 'prop-types';
 import { VscTrash, VscEdit } from 'react-icons/vsc';
 import * as operation from '../redux/operation';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import contactsAction from '../redux/action';
+import { getContactsItem } from '../redux/selectors';
 
 export default function ContactsListItem(props) {
   const dispatch = useDispatch();
+  const stateContactsTtem = useSelector(getContactsItem);
   // const ModalVisible = useSelector(state => state.state)
   return (
     <tr key={props.id}>
@@ -16,7 +18,11 @@ export default function ContactsListItem(props) {
       <td className={styles.buttonConteiner}>
         <button
           onClick={async () => {
-            await dispatch(operation.getContactsById(props.id));
+            const [item] = stateContactsTtem.filter(
+              ({ id }) => id === props.id,
+            );
+            // console.log(item);
+            await dispatch(contactsAction.getContactsById(item));
             dispatch(contactsAction.modalVisible(true));
           }}
         >

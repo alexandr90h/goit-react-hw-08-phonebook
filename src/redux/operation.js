@@ -1,6 +1,7 @@
 import contactsAction from './action';
 import * as API from '../api/api';
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
 const token = {
@@ -16,6 +17,7 @@ export const fetchContacts = () => async dispatch => {
   dispatch(contactsAction.fetchContactsRequuest());
   try {
     const contacts = await API.FetchContacts();
+    console.log(contacts);
     dispatch(contactsAction.fetchContactsSuccess(contacts));
   } catch (error) {
     dispatch(contactsAction.fetchContactsError(error.message));
@@ -37,15 +39,15 @@ export const delContacts = item => async dispatch => {
     .then(() => dispatch(contactsAction.delContactsSuccess(item)))
     .catch(error => dispatch(contactsAction.delContactsError(error)));
 };
-export const getContactsById = item => async dispatch => {
-  dispatch(contactsAction.getContactsByIdRequuest());
-  try {
-    const contact = await API.GetContactsById(item);
-    dispatch(contactsAction.getContactsByIdSuccess(contact));
-  } catch (error) {
-    dispatch(contactsAction.getContactsByIdError(error));
-  }
-};
+// export const getContactsById = item => async dispatch => {
+//   dispatch(contactsAction.getContactsByIdRequuest());
+//   try {
+//     const contact = await API.GetContactsById(item);
+//     dispatch(contactsAction.getContactsByIdSuccess(contact));
+//   } catch (error) {
+//     dispatch(contactsAction.getContactsByIdError(error));
+//   }
+// };
 export const filterContacts = item => async dispatch => {
   dispatch(contactsAction.filterContactsRequuest());
   try {
@@ -94,3 +96,22 @@ export const logoutUser = () => async dispatch => {
     dispatch(contactsAction.logoutUserSuccess());
   } catch (error) {}
 };
+export const fetchCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.registerUser.token;
+
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get('users/current');
+      return data;
+    } catch (error) {
+      // TODO: Добавить обработку ошибки error.message
+    }
+  },
+);

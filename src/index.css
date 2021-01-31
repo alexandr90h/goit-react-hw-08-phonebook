@@ -32,3 +32,6 @@ code {
   justify-content: space-between;
   border-bottom: 1px solid #dee2e6;
 }
+.image-responsive {
+  margin-right: 10px;
+}

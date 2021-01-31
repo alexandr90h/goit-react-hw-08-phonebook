@@ -11,6 +11,7 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
+
 export async function FetchContacts() {
   const { data } = await axios.get('contacts');
   return data;
@@ -25,10 +26,6 @@ export async function FilterContacts(item) {
   const { data } = await axios.get(`/contacts?q=${item}`);
   return data;
 }
-export async function GetContactsById(item) {
-  const { data } = await axios.get(`contacts/${item}`);
-  return data;
-}
 export async function SaveContacts(item) {
   return await axios.patch(`contacts/${item.id}/`, item);
 }
@@ -37,6 +34,3 @@ export async function Register(item) {
   token.set(data.token);
   return data;
 }
-// export async function LogIn(item) {
-//   return await axios.post('users/login', item);
-// }

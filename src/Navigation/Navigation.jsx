@@ -7,10 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as operation from '../redux/operation';
 // import Avatar from 'react-colorful-avatar';
 import LetteredAvatar from 'lettered-avatar';
+import { getIsLoggedIn, getRegisterUserName } from '../redux/selectors';
 
 export default function Navigation() {
-  const userName = useSelector(state => state.registerUser.user.name);
-  const isLoggedIn = useSelector(state => state.registerUser.isLoggedIn);
+  const userName = useSelector(getRegisterUserName);
+  const isLoggedIn = useSelector(getIsLoggedIn);
   const dispatch = useDispatch();
   return (
     <nav className="nav-bar-conteiner">
@@ -60,10 +61,8 @@ export default function Navigation() {
               imgHeight: 100,
             }}
           />
-          {/* <Avatar name={userName} circle="true" style={(width = '30px')} /> */}
           <Navbar.Brand>
-            Welcome
-            {(' ', userName)}
+            {'Welcome,  '} {userName}
           </Navbar.Brand>
           <Button
             variant="outline-primary"

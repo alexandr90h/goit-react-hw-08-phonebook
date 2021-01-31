@@ -2,30 +2,23 @@ import { createReducer } from '@reduxjs/toolkit';
 import contactsAction from './action';
 import { combineReducers } from 'redux';
 
-const initialState = {
-  user: {
-    name: null,
-    email: null,
-  },
-  token: null,
-  isLoggedIn: false,
-};
-
 const items = createReducer([], {
-  [contactsAction.fetchContactsSuccess]: (_, action) => action.payload,
+  [contactsAction.fetchContactsSuccess]: (state, action) =>
+    (state = action.payload),
   [contactsAction.addContactsSuccess]: (state, action) => [
     ...state,
     action.payload,
   ],
   [contactsAction.delContactsSuccess]: (state, action) =>
     state.filter(({ id }) => id !== action.payload),
+  [contactsAction.getContactsById]: (state, action) =>
+    state.filter(({ id }) => id === action.payload),
 });
-const itemById = createReducer(
-  {},
-  {
-    [contactsAction.getContactsByIdSuccess]: (_, action) => action.payload,
-  },
-);
+
+const itemById = createReducer(null, {
+  [contactsAction.getContactsById]: (_, action) => action.payload,
+});
+
 const isLoading = createReducer(false, {
   [contactsAction.fetchContactsRequuest]: () => true,
   [contactsAction.fetchContactsSuccess]: () => false,
@@ -44,23 +37,6 @@ const filter = createReducer('', {
 const modalVisible = createReducer(false, {
   [contactsAction.modalVisible]: (_, action) => action.payload,
 });
-const registerUser = createReducer(initialState, {
-  [contactsAction.registerUserSuccess]: (state, action) => {
-    state.user = action.payload.user;
-    state.token = action.payload.token;
-    state.isLoggedIn = true;
-  },
-  [contactsAction.loginUserSuccess]: (state, action) => {
-    state.user = action.payload.user;
-    state.token = action.payload.token;
-    state.isLoggedIn = true;
-  },
-  [contactsAction.logoutUserSuccess]: (state, _) => {
-    state.user = initialState.user;
-    state.token = initialState.token;
-    state.isLoggedIn = initialState.isLoggedIn;
-  },
-});
 export default combineReducers({
   items,
   isLoading,
@@ -69,5 +45,4 @@ export default combineReducers({
   filterItems,
   itemById,
   modalVisible,
-  registerUser,
 });

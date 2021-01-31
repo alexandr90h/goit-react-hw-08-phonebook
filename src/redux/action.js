@@ -16,12 +16,6 @@ const filterContactsRequuest = createAction('contacts/filterContactsRequuest');
 const filterContactsSuccess = createAction('contacts/filterContactsSuccess');
 const filterContactsError = createAction('contacts/filterContactsError');
 
-const getContactsByIdRequuest = createAction(
-  'contacts/GetContactsByIdRequuest',
-);
-const getContactsByIdSuccess = createAction('contacts/GetContactsByIdSuccess');
-const getContactsByIdError = createAction('contacts/GetContactsByIdError');
-
 const saveContactsByIdRequuest = createAction(
   'contacts/saveContactsByIdRequuest',
 );
@@ -42,10 +36,25 @@ const logoutUserRequuest = createAction('contacts/logoutUserRequuest');
 const logoutUserSuccess = createAction('contacts/logoutUserSuccess');
 const logoutUserError = createAction('contacts/logoutUserError');
 
+const fetchCurrentUserRequuest = createAction(
+  'contacts/fetchCurrentUserRequuest',
+);
+const fetchCurrentUserSuccess = createAction(
+  'contacts/fetchCurrentUserSuccess',
+);
+
+const fetchCurrentUserError = createAction('contacts/fetchCurrentUserError');
+const getContactsById = createAction('contacts/GetContactsById');
 const filterChange = createAction('contacts/changeFilter');
 const modalVisible = createAction('contacts/modalVisible');
 
+//---------------------------------------------------------------
+
 const contactsAction = {
+  fetchCurrentUserRequuest,
+  fetchCurrentUserSuccess,
+  fetchCurrentUserError,
+  getContactsById,
   logoutUserError,
   logoutUserSuccess,
   logoutUserRequuest,
@@ -65,9 +74,6 @@ const contactsAction = {
   filterContactsSuccess,
   filterContactsError,
   filterChange,
-  getContactsByIdSuccess,
-  getContactsByIdRequuest,
-  getContactsByIdError,
   modalVisible,
   saveContactsByIdRequuest,
   saveContactsByIdSuccess,
