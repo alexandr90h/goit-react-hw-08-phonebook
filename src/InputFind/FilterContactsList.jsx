@@ -2,12 +2,22 @@ import ContactsListItem from '../ContactsList/ContactsItem';
 // import styles from '../ContactsList/conractsList.module.scss';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { getFilterItem } from '../redux/selectors';
+import { getContactsItem, getFilterName } from '../redux/selectors';
 import Table from 'react-bootstrap/Table';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function FilterContactsList() {
   let n = 1;
-  const filterItems = useSelector(getFilterItem);
+  const filterItems = useSelector(getContactsItem);
+  const filterName = useSelector(getFilterName);
+  const [filterItemsNew, setFilterItemsNew] = useState([]);
+  useEffect(() => {
+    setFilterItemsNew(
+      filterItems.filter(({ name }) => name.toLowerCase().includes(filterName)),
+    );
+    // eslint-disable-next-line
+  }, [filterName]);
   return (
     <Table striped bordered hover>
       <thead>
@@ -19,7 +29,7 @@ export default function FilterContactsList() {
         </tr>
       </thead>
       <tbody>
-        {filterItems.map(obj => {
+        {filterItemsNew.map(obj => {
           return (
             <ContactsListItem
               n={n++}

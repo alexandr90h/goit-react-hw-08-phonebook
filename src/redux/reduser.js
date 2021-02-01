@@ -13,6 +13,8 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== action.payload),
   [contactsAction.getContactsById]: (state, action) =>
     state.filter(({ id }) => id === action.payload),
+  // [contactsAction.filterContactsName]: (state, action) =>
+  //   state.filter(({ name }) => name.toLowerCase().includes(action.payload)),
 });
 
 const itemById = createReducer(null, {
@@ -28,8 +30,8 @@ const error = createReducer(null, {
   [contactsAction.fetchContactsError]: (_, action) => action.payload,
   [contactsAction.fetchContactsRequuest]: () => null,
 });
-const filterItems = createReducer([], {
-  [contactsAction.filterContactsSuccess]: (_, action) => action.payload,
+const filterName = createReducer('', {
+  [contactsAction.filterContactsName]: (_, action) => action.payload,
 });
 const modalVisible = createReducer(false, {
   [contactsAction.modalVisible]: (_, action) => action.payload,
@@ -38,7 +40,7 @@ export default combineReducers({
   items,
   isLoading,
   error,
-  filterItems,
+  filterName,
   itemById,
   modalVisible,
 });

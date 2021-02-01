@@ -8,11 +8,11 @@ import FormControl from 'react-bootstrap/FormControl';
 export default function InputFind() {
   const dispatch = useDispatch();
   const resetInputFind = () => {
-    dispatch(contactsAction.filterChange(''));
+    dispatch(contactsAction.filterContactsName(''));
     document.querySelector('#btn-reset').style.color = 'rgb(192, 192, 192)';
   };
   const hendlInputFilter = e => {
-    dispatch(contactsAction.filterChange(e.currentTarget.value));
+    dispatch(contactsAction.filterContactsName(e.currentTarget.value));
     e.currentTarget.value
       ? (document.querySelector('#btn-reset').style.color = 'red')
       : (document.querySelector('#btn-reset').style.color =

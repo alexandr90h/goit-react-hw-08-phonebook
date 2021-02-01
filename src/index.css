@@ -35,3 +35,6 @@ code {
 .image-responsive {
   margin-right: 10px;
 }
+#btn-reset {
+  color: grey;
+}
