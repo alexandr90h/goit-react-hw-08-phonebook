@@ -15,12 +15,10 @@ import * as operation from '../redux/operation';
 
 export default function ModalEdit() {
   const dispatch = useDispatch();
-  const itemById = useSelector(state => state.itemById);
-  console.log(itemById);
+  const itemById = useSelector(state => state.contacts.itemById);
   const [name, setName] = useState(itemById.name);
   const [number, setNumber] = useState(itemById.number);
   const hendleInputChanga = e => {
-    console.log(e.target.value);
     switch (e.target.name) {
       case 'name':
         setName(e.target.value);
@@ -36,7 +34,7 @@ export default function ModalEdit() {
 
   const hendleOnSubmit = e => {
     e.preventDefault();
-    dispatch(operation.saveContacts(itemById.id, name, number));
+    dispatch(operation.saveContacts(itemById.id, { name, number }));
     handleClose();
   };
 

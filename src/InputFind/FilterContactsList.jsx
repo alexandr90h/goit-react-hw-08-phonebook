@@ -1,21 +1,13 @@
 import ContactsListItem from '../ContactsList/ContactsItem';
 // import styles from '../ContactsList/conractsList.module.scss';
 import PropTypes from 'prop-types';
-import * as operation from '../redux/operation';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { getFilterName, getFilterItem } from '../redux/selectors';
+import { useSelector } from 'react-redux';
+import { getFilterItem } from '../redux/selectors';
 import Table from 'react-bootstrap/Table';
 
 export default function FilterContactsList() {
   let n = 1;
-  const filterName = useSelector(getFilterName);
   const filterItems = useSelector(getFilterItem);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(operation.filterContacts(filterName));
-    // eslint-disable-next-line
-  }, [filterItems]);
   return (
     <Table striped bordered hover>
       <thead>

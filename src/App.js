@@ -6,12 +6,14 @@ import Registration from './views/Registration';
 import Contacts from './views/Contacts';
 import Login from './views/Login';
 import Home from './views/Home';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as operation from './redux/operation';
+import { getIsLoggedIn } from './redux/selectors';
 
 export default function App() {
   const dispath = useDispatch();
+  const isLoggedIn = useSelector(getIsLoggedIn);
   useEffect(() => {
     dispath(operation.fetchCurrentUser());
   }, [dispath]);
@@ -25,9 +27,7 @@ export default function App() {
         <Route path="/register">
           <Registration />
         </Route>
-        <Route path="/contacts">
-          <Contacts />
-        </Route>
+        <Route path="/contacts">{isLoggedIn && <Contacts />}</Route>
         <Route path="/login">
           <Login />
         </Route>

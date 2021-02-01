@@ -17,12 +17,11 @@ export default function ContactsListItem(props) {
       <td>{props.number}</td>
       <td className={styles.buttonConteiner}>
         <button
-          onClick={async () => {
+          onClick={() => {
             const [item] = stateContactsTtem.filter(
               ({ id }) => id === props.id,
             );
-            // console.log(item);
-            await dispatch(contactsAction.getContactsById(item));
+            dispatch(contactsAction.getContactsById(item));
             dispatch(contactsAction.modalVisible(true));
           }}
         >

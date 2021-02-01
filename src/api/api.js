@@ -26,8 +26,8 @@ export async function FilterContacts(item) {
   const { data } = await axios.get(`/contacts?q=${item}`);
   return data;
 }
-export async function SaveContacts(item) {
-  return await axios.patch(`contacts/${item.id}/`, item);
+export async function SaveContacts(item, namNum) {
+  return await axios.patch(`contacts/${item}`, namNum);
 }
 export async function Register(item) {
   const { data } = await axios.post('users/signup', item);

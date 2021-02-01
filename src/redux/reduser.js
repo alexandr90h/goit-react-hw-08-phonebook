@@ -31,9 +31,6 @@ const error = createReducer(null, {
 const filterItems = createReducer([], {
   [contactsAction.filterContactsSuccess]: (_, action) => action.payload,
 });
-const filter = createReducer('', {
-  [contactsAction.filterChange]: (_, action) => action.payload,
-});
 const modalVisible = createReducer(false, {
   [contactsAction.modalVisible]: (_, action) => action.payload,
 });
@@ -41,7 +38,6 @@ export default combineReducers({
   items,
   isLoading,
   error,
-  filter,
   filterItems,
   itemById,
   modalVisible,
