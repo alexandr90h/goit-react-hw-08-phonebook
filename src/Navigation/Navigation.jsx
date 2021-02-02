@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import * as operation from '../redux/operation';
-// import Avatar from 'react-colorful-avatar';
 import LetteredAvatar from 'lettered-avatar';
 import { getIsLoggedIn, getRegisterUserName } from '../redux/selectors';
 
@@ -17,7 +16,7 @@ export default function Navigation() {
     <nav className="nav-bar-conteiner">
       <Nav variant="tabs">
         <Nav.Item>
-          <Nav.Link as={NavLink} to="/">
+          <Nav.Link as={NavLink} to="/" exact>
             Home
           </Nav.Link>
         </Nav.Item>

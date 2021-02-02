@@ -27,7 +27,11 @@ export default function ContactsListItem(props) {
         >
           <VscEdit />
         </button>
-        <button onClick={() => dispatch(operation.delContacts(props.id))}>
+        <button
+          onClick={() => {
+            dispatch(operation.delContacts(props.id));
+          }}
+        >
           <VscTrash />
         </button>
       </td>

@@ -41,12 +41,14 @@ const fetchCurrentUserSuccess = createAction(
 const fetchCurrentUserError = createAction('contacts/fetchCurrentUserError');
 
 const filterContactsName = createAction('contacts/filterName');
+const filterItems = createAction('contacts/filterItems');
 const getContactsById = createAction('contacts/GetContactsById');
 const modalVisible = createAction('contacts/modalVisible');
 
 //---------------------------------------------------------------
 
 const contactsAction = {
+  filterItems,
   filterContactsName,
   fetchCurrentUserRequuest,
   fetchCurrentUserSuccess,

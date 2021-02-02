@@ -7,7 +7,7 @@ import Contacts from './views/Contacts';
 import Login from './views/Login';
 import Home from './views/Home';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, Suspense } from 'react';
+import { useEffect } from 'react';
 import * as operation from './redux/operation';
 import PrivateRoute from './route/PrivateRoute';
 import PublicRoute from './route/PublicRoute';
@@ -20,30 +20,30 @@ export default function App() {
     dispath(operation.fetchCurrentUser());
   }, [dispath]);
   return (
-    !isLoading && (
+    <>
       <div className={styles.mainContainer}>
-        <Navigation />
-        <Suspense
-          fallback={
-            <Loader type="ThreeDots" color="#00BFFF" height={100} width={100} />
-          }
-        >
-          <Switch>
-            <PublicRoute path="/" exact>
-              <Home />
-            </PublicRoute>
-            <PublicRoute path="/register" restricted>
-              <Registration />
-            </PublicRoute>
-            <PublicRoute path="/login" restricted>
-              <Login />
-            </PublicRoute>
-            <PrivateRoute path="/contacts">
-              <Contacts />
-            </PrivateRoute>
-          </Switch>
-        </Suspense>
+        {!isLoading ? (
+          <>
+            <Navigation />
+            <Switch>
+              <PublicRoute path="/" exact>
+                <Home />
+              </PublicRoute>
+              <PublicRoute path="/register" restricted>
+                <Registration />
+              </PublicRoute>
+              <PublicRoute path="/login" restricted>
+                <Login />
+              </PublicRoute>
+              <PrivateRoute path="/contacts">
+                <Contacts />
+              </PrivateRoute>
+            </Switch>
+          </>
+        ) : (
+          <Loader type="ThreeDots" color="#00BFFF" height={100} width={100} />
+        )}
       </div>
-    )
+    </>
   );
 }

@@ -29,7 +29,7 @@ const authUser = createReducer(initialState, {
     state.isLoggedIn = initialState.isLoggedIn;
   },
   [operation.fetchCurrentUser.fulfilled]: (state, action) => {
-    state.user = action.payload;
+    state.user.name = action.payload.name;
     state.isLoggedIn = true;
   },
 });

@@ -2,22 +2,20 @@ import ContactsListItem from '../ContactsList/ContactsItem';
 // import styles from '../ContactsList/conractsList.module.scss';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { getContactsItem, getFilterName } from '../redux/selectors';
+import { getFilterName } from '../redux/selectors';
 import Table from 'react-bootstrap/Table';
-import { useEffect } from 'react';
-import { useState } from 'react';
+
+// import { useState } from 'react';
 
 export default function FilterContactsList() {
   let n = 1;
-  const filterItems = useSelector(getContactsItem);
+  const contactsItems = useSelector(state => state.contacts.items);
+  // const filterItems = useSelector(state => state.contacts.filterItems);
   const filterName = useSelector(getFilterName);
-  const [filterItemsNew, setFilterItemsNew] = useState([]);
-  useEffect(() => {
-    setFilterItemsNew(
-      filterItems.filter(({ name }) => name.toLowerCase().includes(filterName)),
-    );
-    // eslint-disable-next-line
-  }, [filterName]);
+  // const [filterItemsNew, setFilterItemsNew] = useState([]);
+  const as = contactsItems.filter(({ name }) => {
+    return name.toLowerCase().includes(filterName);
+  });
   return (
     <Table striped bordered hover>
       <thead>
@@ -25,11 +23,11 @@ export default function FilterContactsList() {
           <th>#</th>
           <th>Name</th>
           <th>Number</th>
-          <th width="100px">X</th>
+          <th width="100px">XXXXX</th>
         </tr>
       </thead>
       <tbody>
-        {filterItemsNew.map(obj => {
+        {as.map(obj => {
           return (
             <ContactsListItem
               n={n++}

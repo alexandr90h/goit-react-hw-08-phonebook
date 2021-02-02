@@ -12,7 +12,7 @@ export default function Contacts() {
 
   return (
     <>
-      <h1>Phonebook</h1>
+      <h1 className="title-contacts-box">Phonebook</h1>
       <div>
         <InputMainForm />
       </div>
