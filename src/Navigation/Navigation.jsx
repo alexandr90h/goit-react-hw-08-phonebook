@@ -17,7 +17,7 @@ export default function Navigation() {
     <nav className="nav-bar-conteiner">
       <Nav variant="tabs">
         <Nav.Item>
-          <Nav.Link as={NavLink} to="/" exact>
+          <Nav.Link as={NavLink} to="/">
             Home
           </Nav.Link>
         </Nav.Item>

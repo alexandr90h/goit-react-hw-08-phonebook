@@ -38,3 +38,27 @@ code {
 #btn-reset {
   color: grey;
 }
+.titel-home {
+  text-align: center;
+}
+.us-app {
+  text-align: center;
+  color: #ff8400;
+  font-size: 28px;
+}
+.list-dev-icon {
+  list-style: none;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2vw;
+}
+.list-dev-icon li {
+  padding: 0.5em;
+  text-align: center;
+  color: #505050;
+}
+.list-dev-icon li svg {
+  width: 80px;
+  height: 80px;
+}

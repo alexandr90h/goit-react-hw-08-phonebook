@@ -1,6 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit';
 import contactsAction from './action';
 import { combineReducers } from 'redux';
+import * as operation from './operation';
 
 const items = createReducer([], {
   [contactsAction.fetchContactsSuccess]: (state, action) =>
@@ -22,9 +23,9 @@ const itemById = createReducer(null, {
 });
 
 const isLoading = createReducer(false, {
-  [contactsAction.fetchContactsRequuest]: () => true,
-  [contactsAction.fetchContactsSuccess]: () => false,
-  [contactsAction.fetchContactsError]: () => false,
+  [operation.fetchCurrentUser.pending]: () => true,
+  [operation.fetchCurrentUser.fulfilled]: () => false,
+  [operation.fetchCurrentUser.rejected]: () => false,
 });
 const error = createReducer(null, {
   [contactsAction.fetchContactsError]: (_, action) => action.payload,
