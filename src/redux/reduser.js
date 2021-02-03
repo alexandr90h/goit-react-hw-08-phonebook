@@ -14,8 +14,6 @@ const items = createReducer([], {
     state.filter(({ id }) => id !== action.payload),
   [contactsAction.getContactsById]: (state, action) =>
     state.filter(({ id }) => id === action.payload),
-  // [contactsAction.filterContactsName]: (state, action) =>
-  //   state.filter(({ name }) => name.toLowerCase().includes(action.payload)),
   [contactsAction.filterItems]: (state, action) =>
     state.filter(({ name }) => {
       return name.toLowerCase().includes(action.payload);

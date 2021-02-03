@@ -9,7 +9,6 @@ import { getContactsItem } from '../redux/selectors';
 export default function ContactsListItem(props) {
   const dispatch = useDispatch();
   const stateContactsTtem = useSelector(getContactsItem);
-  // const ModalVisible = useSelector(state => state.state)
   return (
     <tr key={props.id}>
       <td lg="2">{props.n}</td>

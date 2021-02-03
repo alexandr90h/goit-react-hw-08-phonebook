@@ -2,8 +2,6 @@ import { createReducer } from '@reduxjs/toolkit';
 import contactsAction from './action';
 import * as operation from '../redux/operation';
 
-// import { combineReducers } from 'redux';
-
 const initialState = {
   user: {
     name: null,

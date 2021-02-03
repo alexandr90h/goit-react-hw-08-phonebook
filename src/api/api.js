@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'http://localhost:3001';
-
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
 const token = {
   set(token) {

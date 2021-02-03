@@ -1,9 +1,6 @@
 import styles from './inputMainForm.module.scss';
 import { useState } from 'react';
 import { VscDeviceMobile } from 'react-icons/vsc';
-// import { useForm } from 'react-hook-form';
-// import * as yup from 'yup';
-// import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 import * as operation from '../redux/operation';
 import { getContactsItem } from '../redux/selectors';
@@ -14,13 +11,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
 export default function InputMainForm() {
-  //     const schema = yup.object().shape({
-  //     name: yup.string().required(),
-  //     number:yup.number().required(),
-  // })
-
   const stateData = useSelector(getContactsItem);
-  // const { register, handleSubmit, errors} = useForm({resolver:yupResolver(schema)});
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
